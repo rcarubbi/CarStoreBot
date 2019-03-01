@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CarStoreBot.Integration.Models
 {
+    [Serializable]
     public class Warranty
     {
         public Warranty()

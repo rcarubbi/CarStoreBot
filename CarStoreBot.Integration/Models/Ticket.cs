@@ -2,6 +2,8 @@
 
 namespace CarStoreBot.Integration.Models
 {
+    [Serializable]
+
     public class Ticket
     {
         public Vehicle Vehicle { get; set; }

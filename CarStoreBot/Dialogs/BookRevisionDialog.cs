@@ -28,13 +28,10 @@ namespace CarStoreBot.Dialogs
             if (entities.ContainsKey(NLPDialog.DATE_ENTITY_NAME))
             {
                 _desiredDate = DateTime.Parse(entities[NLPDialog.DATE_ENTITY_NAME]);
+                _desiredTime = DateTime.Parse(entities[NLPDialog.DATE_ENTITY_NAME]);
                 _preSelectedOption = NEW_APPOINTMENT;
             }
-            if (entities.ContainsKey(NLPDialog.TIME_ENTITY_NAME))
-            {
-                _desiredTime = DateTime.Parse(entities[NLPDialog.TIME_ENTITY_NAME]);
-                _preSelectedOption = NEW_APPOINTMENT;
-            }
+            
             if (entities.Count == 0)
             {
                 _preSelectedOption = string.Empty;

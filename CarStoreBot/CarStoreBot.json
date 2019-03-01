@@ -1,0 +1,213 @@
+{
+  "luis_schema_version": "3.2.0",
+  "versionId": "0.1",
+  "name": "CarStoreBot",
+  "desc": "",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "BookRevision"
+    },
+    {
+      "name": "CheckGuarantee"
+    },
+    {
+      "name": "CheckProblem"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "SearchStore"
+    },
+    {
+      "name": "TrackService"
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "closedLists": [],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [
+    {
+      "name": "datetimeV2",
+      "roles": [
+        "DesiredDate",
+        "DesiredTime"
+      ]
+    }
+  ],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "a red light just pop up on my panel",
+      "intent": "CheckProblem",
+      "entities": []
+    },
+    {
+      "text": "can i have a revision tomorrow",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "does my car have any guarantee?",
+      "intent": "CheckGuarantee",
+      "entities": []
+    },
+    {
+      "text": "find a store for me",
+      "intent": "SearchStore",
+      "entities": []
+    },
+    {
+      "text": "how is my service going",
+      "intent": "TrackService",
+      "entities": []
+    },
+    {
+      "text": "i have to get a revision",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "i need a revision",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "i need to go to a store",
+      "intent": "SearchStore",
+      "entities": []
+    },
+    {
+      "text": "i want to book a revision",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "i'd like a revision today",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "i'd like to know if my car is ready",
+      "intent": "TrackService",
+      "entities": []
+    },
+    {
+      "text": "i'd like to take my car to revision",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "i'ld like to know what are my warranties",
+      "intent": "CheckGuarantee",
+      "entities": []
+    },
+    {
+      "text": "i'm looking for stores",
+      "intent": "SearchStore",
+      "entities": []
+    },
+    {
+      "text": "is my car ready to pick up?",
+      "intent": "TrackService",
+      "entities": []
+    },
+    {
+      "text": "it's time to have a revision",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "my panel is showing a light",
+      "intent": "CheckProblem",
+      "entities": []
+    },
+    {
+      "text": "next week i'm available for a revision",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "panel lights meanings",
+      "intent": "CheckProblem",
+      "entities": []
+    },
+    {
+      "text": "schedule a revision",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "stores in my city",
+      "intent": "SearchStore",
+      "entities": []
+    },
+    {
+      "text": "stores near me",
+      "intent": "SearchStore",
+      "entities": []
+    },
+    {
+      "text": "there is a light on my panel and i don't know why",
+      "intent": "CheckProblem",
+      "entities": []
+    },
+    {
+      "text": "what a exclamation mark light means?",
+      "intent": "CheckProblem",
+      "entities": []
+    },
+    {
+      "text": "what about my warranty",
+      "intent": "CheckGuarantee",
+      "entities": []
+    },
+    {
+      "text": "what are my guaranties",
+      "intent": "CheckGuarantee",
+      "entities": []
+    },
+    {
+      "text": "what kind of guarantee do i have?",
+      "intent": "CheckGuarantee",
+      "entities": []
+    },
+    {
+      "text": "when i can get my car back",
+      "intent": "TrackService",
+      "entities": []
+    },
+    {
+      "text": "when i can take my car to a revision",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "when the service will be done",
+      "intent": "TrackService",
+      "entities": []
+    },
+    {
+      "text": "where i can take my car to a revision",
+      "intent": "BookRevision",
+      "entities": []
+    },
+    {
+      "text": "where is the closest store",
+      "intent": "SearchStore",
+      "entities": []
+    },
+    {
+      "text": "why a light is on my panel",
+      "intent": "CheckProblem",
+      "entities": []
+    }
+  ],
+  "settings": []
+}

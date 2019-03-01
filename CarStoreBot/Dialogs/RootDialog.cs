@@ -49,7 +49,7 @@ namespace CarStoreBot.Dialogs
         private async Task StartConversation(IDialogContext context, object message)
         {
             _lastSelectedOption = MenuOptions.Other;
-            if (!context.UserData.TryGetValue<User>("user", out var user))
+            if (!context.UserData.TryGetValue<User>("User", out var user))
             {
                 await context.Forward(new AuthenticationDialog(), this.ResumeAfterAuthentication, message, CancellationToken.None);
             }

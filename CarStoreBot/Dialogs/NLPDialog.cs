@@ -3,6 +3,8 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Threading.Tasks;
 
 namespace CarStoreBot.Dialogs
@@ -17,8 +19,9 @@ namespace CarStoreBot.Dialogs
             
         }
 
-        public const string DATE_ENTITY_NAME = "DesiredDate";
-        public const string TIME_ENTITY_NAME = "DesiredTime";
+        public const string DATE_ENTITY_NAME = "builtin.datetimeV2.date";
+        public const string DATETIME_ENTITY_NAME = "builtin.datetimeV2.datetime";
+        public const string DATETIMERANGE_ENTITY_NAME = "builtin.datetimeV2.datetimerange";
 
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)
@@ -38,8 +41,16 @@ namespace CarStoreBot.Dialogs
         public Task BookRevision(IDialogContext context, LuisResult result)
         {
             result.TryFindEntity(DATE_ENTITY_NAME, out var desiredDateRecommendation);
-            result.TryFindEntity(TIME_ENTITY_NAME, out var desiredTimeRecommendation);
-            context.Done($"{MenuOptions.BookRevision.ToString()}_{DATE_ENTITY_NAME}|{desiredDateRecommendation?.Entity}_{TIME_ENTITY_NAME}|{desiredTimeRecommendation?.Entity}");
+            result.TryFindEntity(DATETIME_ENTITY_NAME, out var desiredDateTimeRecommendation);
+            result.TryFindEntity(DATETIMERANGE_ENTITY_NAME, out var desiredDateTimeRangeRecommendation);
+
+
+            var desiredDateTimeResolution = (((desiredDateRecommendation ?? desiredDateTimeRecommendation)?.Resolution["values"] as List<object>)?[0] as Dictionary<string, object>)?["value"] ??
+                                            ((desiredDateTimeRangeRecommendation?.Resolution["values"] as List<object>)?[0] as Dictionary<string, object>)?["start"];
+
+           
+
+            context.Done($"{MenuOptions.BookRevision.ToString()}_{DATE_ENTITY_NAME}|{desiredDateTimeResolution}");
             return Task.CompletedTask;
         }
 

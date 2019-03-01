@@ -44,7 +44,7 @@ namespace CarStoreBot.Forms
                     return Task.FromResult(result);
                 })
                    .Field(nameof(DesiredDate), 
-                    active: (a) => a.DesiredDate == default(DateTime), 
+                    active: (a) => a.DesiredDate == default(DateTime) || a.DesiredDate.Date <= DateTime.Today, 
                     validate: (state, desiredDate) =>
                     {
                         var result = new ValidateResult();
@@ -61,8 +61,11 @@ namespace CarStoreBot.Forms
                         }
                         return Task.FromResult(result);
                     })
-                   .Field(nameof(DesiredDate), 
-                    active: (a) => a.DesiredTime == default(DateTime), 
+                   .Field(nameof(DesiredTime), 
+                    active: (a) => a.DesiredTime == default(DateTime) 
+                                   || (a.DesiredTime.Minute != 0 && a.DesiredTime.Minute != 30)  
+                                   || a.DesiredTime.TimeOfDay < TimeSpan.Parse("09:00") 
+                                   || a.DesiredTime.TimeOfDay > TimeSpan.Parse("17:30"), 
                     validate: (state, desiredTime) =>
                     {
                         var result = new ValidateResult();

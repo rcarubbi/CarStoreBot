@@ -224,6 +224,7 @@
     </Content>
     <Content Include="CarStoreBot.bot" />
     <Fakes Include="Fakes\CarStoreBot.Integration.fakes" />
+    <Content Include="CarStoreBot.json" />
     <None Include="Properties\PublishProfiles\CarubbiCarStoreBot - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
