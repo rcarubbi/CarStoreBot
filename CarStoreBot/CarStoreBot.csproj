@@ -167,10 +167,24 @@
     <Content Include="credencials.xml" />
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
+    <Content Include="img\abs_system.jpg" />
     <Content Include="img\BookRevision.png" />
+    <Content Include="img\break_system.jpg" />
+    <Content Include="img\chassis.jpg" />
     <Content Include="img\CheckGuarantee.jpg" />
     <Content Include="img\CheckProblem.jpg" />
+    <Content Include="img\door_open.jpg" />
+    <Content Include="img\engine_cooling.jpg" />
+    <Content Include="img\engine_oil_pressure.jpg" />
+    <Content Include="img\countyCity.jpg" />
+    <Content Include="img\fault_indicator.jpg" />
+    <Content Include="img\low_battery.jpg" />
+    <Content Include="img\low_fuel.jpg" />
+    <Content Include="img\plate.jpg" />
+    <Content Include="img\postcode.jpg" />
+    <Content Include="img\revision.jpg" />
     <Content Include="img\SearchStore.jpg" />
+    <Content Include="img\share.png" />
     <Content Include="img\TrackService.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

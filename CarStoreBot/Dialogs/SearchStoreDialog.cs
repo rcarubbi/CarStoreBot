@@ -8,6 +8,7 @@ using Microsoft.Bot.Builder.SelectableLocation;
 using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -253,7 +254,7 @@ namespace CarStoreBot.Dialogs
             {
                 Title = "By Postcode",
                 Subtitle = "Stores near your postcode",
-                Images = new List<CardImage> { new CardImage($"http://atentogmbot.azurewebsites.net/imgs/cep.jpg") },
+                Images = new List<CardImage> { new CardImage($"{ConfigurationManager.AppSettings["BaseUrl"]}/img/postcode.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.PostBack, "Type your postcode", null, POSTCODE_OPTION) }
             };
             list.Add(card.ToAttachment());
@@ -261,7 +262,7 @@ namespace CarStoreBot.Dialogs
             {
                 Title = "By City and County",
                 Subtitle = "Stores in your city",
-                Images = new List<CardImage> { new CardImage($"http://fordbotpoc.azurewebsites.net/imgs/estadoCidade.jpg") },
+                Images = new List<CardImage> { new CardImage($"{ConfigurationManager.AppSettings["BaseUrl"]}/img/countyCity.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.PostBack, "Type your city and state", null, COUNTY_AND_CITY_OPTION) }
             };
             list.Add(card.ToAttachment());
@@ -273,7 +274,7 @@ namespace CarStoreBot.Dialogs
                     {
                         Title = "By GPS Location sharing",
                         Subtitle = "Share your location through facebook",
-                        Images = new List<CardImage> { new CardImage($"http://atentogmbot.azurewebsites.net/imgs/compartilhar.png") },
+                        Images = new List<CardImage> { new CardImage($"{ConfigurationManager.AppSettings["BaseUrl"]}/img/share.png") },
                         Buttons = new List<CardAction> { new CardAction(ActionTypes.PostBack, "Share", null, SHARE_OPTION) }
                     };
                     list.Add(card.ToAttachment());
@@ -283,7 +284,7 @@ namespace CarStoreBot.Dialogs
                     {
                         Title = "By GPS Location sharing",
                         Subtitle = "Share your location through telegram",
-                        Images = new List<CardImage> { new CardImage("http://atentogmbot.azurewebsites.net/imgs/compartilhar.png") },
+                        Images = new List<CardImage> { new CardImage($"{ConfigurationManager.AppSettings["BaseUrl"]}/img/share.png") },
                         Buttons = new List<CardAction> { new CardAction(ActionTypes.PostBack, "Share", null, SHARE_OPTION) }
                     };
                     list.Add(card.ToAttachment());

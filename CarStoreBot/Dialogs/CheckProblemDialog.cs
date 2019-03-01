@@ -92,16 +92,22 @@ namespace CarStoreBot.Dialogs
             {
                 var predictionClient = new CustomVisionPredictionClient
                 {
-                    ApiKey = ConfigurationManager.AppSettings["CustomVision.PredictionApiKey"]
+                    ApiKey = ConfigurationManager.AppSettings["CustomVision.PredictionApiKey"],
+                    Endpoint = ConfigurationManager.AppSettings["CustomVision.PredictionDomain"],
                 };
 
                 try
                 {
-                    var imagePrediction = await predictionClient.PredictImageUrlAsync(
-                        new Guid(ConfigurationManager.AppSettings["CustomVision.ProjectId"]),
-                        new ImageUrl(activity.Attachments[0].ContentUrl));
+                    var contentUrl = activity.Attachments[0].ContentUrl;
+#if DEBUG
+                    contentUrl = "http://1.bp.blogspot.com/-TRqv60nIjQY/Ulcuj1IZPiI/AAAAAAAAncM/axfyNzJQ62c/s1600/98_GM_FGD_3686_internas_10-10-13.jpg";
+#endif
 
-                    if (imagePrediction.Predictions.Any(x =>
+                    var imagePrediction = await predictionClient.PredictImageUrlWithHttpMessagesAsync(
+                        new Guid(ConfigurationManager.AppSettings["CustomVision.ProjectId"]),
+                        new ImageUrl(contentUrl));
+
+                    if (imagePrediction.Body.Predictions.Any(x =>
                         _problemsDictionary.Select(y => y.Key).Any(key => key == x.TagName) && x.Probability > .75))
                     {
 
@@ -112,7 +118,7 @@ namespace CarStoreBot.Dialogs
 
                         message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
-                        foreach (var prediction in imagePrediction.Predictions)
+                        foreach (var prediction in imagePrediction.Body.Predictions)
                         {
                             if (!_problemsDictionary.TryGetValue(prediction.TagName, out var description) ||
                                 !(prediction.Probability > .75)) continue;
@@ -123,8 +129,7 @@ namespace CarStoreBot.Dialogs
                                 Text = description.Item2,
                                 Images = new List<CardImage>
                                 {
-                                    new CardImage(
-                                        $"https://carubbicarbot.blob.core.windows.net/assets/{prediction.TagName}.jpg")
+                                    new CardImage($"{ConfigurationManager.AppSettings["BaseUrl"]}/img/{prediction.TagName}.jpg")
                                 },
                                 Buttons = new List<CardAction>
                                     {new CardAction(ActionTypes.PostBack, "Details", null, prediction.TagName)}
@@ -154,7 +159,7 @@ namespace CarStoreBot.Dialogs
                         context.Done<object>(null);
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await context.PostAsync("I couldn't understand your picture. It looks like an invalid file");
                     context.Done<object>(null);

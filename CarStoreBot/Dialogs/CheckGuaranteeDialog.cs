@@ -8,6 +8,7 @@ using Microsoft.Bot.Builder.FormFlow;
 using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Threading.Tasks;
 
 namespace CarStoreBot.Dialogs
@@ -42,7 +43,7 @@ namespace CarStoreBot.Dialogs
             {
                 Title = "By Chassis",
                 Subtitle = "Search vehicle by chassis",
-                Images = new List<CardImage> { new CardImage($"http://atentogmbot.azurewebsites.net/imgs/chassi.jpg") },
+                Images = new List<CardImage> { new CardImage($"{ConfigurationManager.AppSettings["BaseUrl"]}/img/chassis.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.PostBack, "Chassis", null, CHASSIS_OPTION) }
             };
             list.Add(card.ToAttachment());
@@ -51,7 +52,7 @@ namespace CarStoreBot.Dialogs
             {
                 Title = "By plate",
                 Subtitle = "Search vehicle by plate",
-                Images = new List<CardImage> { new CardImage("http://atentogmbot.azurewebsites.net/imgs/placa.jpg") },
+                Images = new List<CardImage> { new CardImage($"{ConfigurationManager.AppSettings["BaseUrl"]}/img/plate.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.PostBack, "Plate", null, PLATE_OPTION) }
             };
             list.Add(card.ToAttachment());
